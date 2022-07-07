@@ -2,7 +2,7 @@ import Navbar from "./Navbar"
 import Profile from "./pages/Profile"
 import About from "./pages/About"
 import { Route, Routes } from "react-router-dom"
-import React      from 'react';
+import React from 'react';
 
 function App() {
   return (
