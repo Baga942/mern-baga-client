@@ -10,7 +10,7 @@ export default function About() {
   const [listOfFriends, setListOfFriends] = useState([])
 
   const addFriend = () => {
-    Axios.post('http://localhost:3001/addfriend', {
+    Axios.post('https://mern-baga.herokuapp.com/addfriend', {
       name:name,
       age: age
     }).then((response) => {
@@ -21,7 +21,7 @@ export default function About() {
   const updateFriend = (id) => {
     const newAge = prompt("Enter new Age: ")
 
-    Axios.put('http://localhost:3001/update', {newAge: newAge, id: id}).then(() => {
+    Axios.put('https://mern-baga.herokuapp.com/update', {newAge: newAge, id: id}).then(() => {
       setListOfFriends(listOfFriends.map((val) => {
         return val._id === id ? {_id: id, name: val.name, age: newAge} : val
       }))
@@ -29,7 +29,7 @@ export default function About() {
   }
 
   const deleteFriend = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`).then(() => {
+    Axios.delete(`https://mern-baga.herokuapp.com/delete/${id}`).then(() => {
       setListOfFriends(listOfFriends.filter((val)=> {
         return val._id !== id
       }))
@@ -37,7 +37,7 @@ export default function About() {
   }
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/read').then((response) => {
+    Axios.get('https://mern-baga.herokuapp.com/read').then((response) => {
       setListOfFriends(response.data)
     }).catch(() => {
       alert("nah, it is wrong")
